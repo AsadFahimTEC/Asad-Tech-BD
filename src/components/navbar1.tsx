@@ -8,7 +8,7 @@ export default function HomePage() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div id="home" className="relative min-h-screen bg-black text-white overflow-hidden">
       <RGBBackground />
       <StringBalloons />
       <FlyingBirds />
@@ -147,10 +147,10 @@ function Navbar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (v: boolean
         <Logo />
 
         <div className="hidden md:flex gap-10 text-sm font-semibold tracking-wider">
-          <NavLink label="Home" />
-          <NavLink label="Products" />
-          <NavLink label="Pricing" />
-          <NavLink label="Contact" />
+          <NavLink label="Home" href="/" />
+          <NavLink label="Products" href="#products" />
+          <NavLink label="Games" href="#games" />
+          <NavLink label="Quiz" href="#quiz" />
         </div>
 
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden relative z-50">
@@ -163,19 +163,31 @@ function Navbar({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (v: boolean
         className="md:hidden overflow-hidden bg-black/95 text-center"
       >
         <div className="flex flex-col gap-6 py-6">
-          <NavLink label="Home" />
-          <NavLink label="Products" />
-          <NavLink label="Pricing" />
-          <NavLink label="Contact" />
+          <NavLink label="Home" href="#home" onClick={() => setIsOpen(false)} />
+          <NavLink label="Products" href="#products" onClick={() => setIsOpen(false)} />
+          <NavLink label="Games" href="#games" onClick={() => setIsOpen(false)} />
+          <NavLink label="Quiz" href="#quiz" onClick={() => setIsOpen(false)} />
         </div>
       </motion.div>
     </nav>
   )
 }
 
-function NavLink({ label }: { label: string }) {
+function NavLink({
+  label,
+  href,
+  onClick,
+}: {
+  label: string
+  href: string
+  onClick?: () => void
+}) {
   return (
-    <a href="#" className="relative group text-white hover:text-cyan-400 transition">
+    <a
+      href={href}
+      onClick={onClick}
+      className="relative group text-white hover:text-cyan-400 transition"
+    >
       {label}
       <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 transition-all duration-500 group-hover:w-full" />
     </a>

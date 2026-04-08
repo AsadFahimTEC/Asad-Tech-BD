@@ -35,10 +35,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ClientWrapper>
           {children}
           <HeroSection />
-          <UpcomingEventsSlider />
-          <EventCategories />
-          <CallToActionSection />
-          <QuizSection />
+          <section id="products" className="scroll-mt-28">
+            <UpcomingEventsSlider />
+          </section>
+          <section id="games" className="scroll-mt-28">
+            <CallToActionSection />
+          </section>
+          <section id="quiz" className="scroll-mt-28">
+            <QuizSection />
+          </section>
         </ClientWrapper>
 
         <Toaster richColors />
