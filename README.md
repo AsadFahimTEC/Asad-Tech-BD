@@ -1,17 +1,3 @@
-![Assignment-2](https://t4.ftcdn.net/jpg/03/06/88/29/360_F_306882952_XYkVbLIWubBrEyg5vvjcKisffe8CsuZG.jpg)
-
-<h1 align="center">🚀 Assignment 5</h1>
-<p align="center"><strong>Batch - 6</strong></p>
-
----
-
-# 📌 Project Overview
-
-Planora
-Planora is a secure, JWT-protected web platform where Admins and registered Users can create, manage, and participate in events. Events can be Public or Private and may include registration fees.
----
-
-
 # 🛠️ Technology Stack
 
 ## Frontend
@@ -46,38 +32,32 @@ You may deploy your project using:
 
 * **Vercel**
 
-### Authentication
+### Vercel Environment Variables Setup
 
-* User Registration
-* User Login
-* Secure authentication
+Before deploying to Vercel, you need to set up the following environment variables in your Vercel project dashboard:
 
-### CRUD Operations
+1. Go to your Vercel project dashboard
+2. Navigate to Settings → Environment Variables
+3. Add the following variables:
 
-Create, Read, Update, Delete functionality.
+```
+NEXT_PUBLIC_BASE_URL=https://planora-client.vercel.app
+SSL_STORE_ID=your_ssl_store_id_here
+SSL_STORE_PASSWORD=your_ssl_store_password_here
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_app_password_here
+```
 
-### Role-Based Access Control (RBAC)
-
-Example roles:
-
-* **Admin**
-* **User**
-
-Admins may manage data while users have limited permissions.
-
----
+**Important Notes:**
+- Replace the placeholder values with your actual credentials
+- For Gmail, use an App Password instead of your regular password
+- SSLCommerz credentials are required for payment processing
+- The `NEXT_PUBLIC_BASE_URL` should match your Vercel deployment URL
 
 # 📤 Submission Details
 
 Frontend Repo    : https://github.com/AsadFahimTEC/planora-client
-Backend Repo     : https://github.com/AsadFahimTEC/planora-server/tree/master
 
 Frontend Live    : https://planora-client.vercel.app
-Backend Live     : https://planora-server-eta.vercel.app
-
-Demo Video       : https://drive.google.com/drive/folders/1D9knQOv3oi1iPt7dCNwlmaLB14yoIO0C?usp=sharing
-
-Admin Email      : admin5@skillbridge.com
-Admin Password   : admin1234
 
 ---

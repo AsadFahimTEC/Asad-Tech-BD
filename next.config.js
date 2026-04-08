@@ -26,12 +26,8 @@
 
 // export default nextConfig;
 
-// import "./src/env";
-import type { NextConfig } from "next";
-
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
@@ -40,10 +36,10 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/auth/:path*",
-        destination: `${BACKEND_URL}/api/auth/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000"}/api/auth/:path*`,
       },
     ];
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

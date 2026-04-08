@@ -1,8 +1,9 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function PaymentSuccess() {
+function PaymentSuccessContent() {
   const params = useSearchParams();
   const product = params.get("product");
   const price = params.get("price");
@@ -18,5 +19,13 @@ export default function PaymentSuccess() {
       <p className="mb-2">Price: ৳ {price}</p>
       <p className="mt-4">Check your email for the invoice.</p>
     </div>
+  );
+}
+
+export default function PaymentSuccess() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-green-900 text-white">Loading...</div>}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 }

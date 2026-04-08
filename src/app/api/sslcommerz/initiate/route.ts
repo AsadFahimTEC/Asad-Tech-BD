@@ -1,13 +1,26 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") return res.status(405).json({ message: "Method not allowed" });
+export async function POST(req: Request) {
+  const body = await req.json();
+  const { name, email, product, price } = body as {
+    name: string;
+    email: string;
+    product: string;
+    price: number;
+  };
 
-  const { name, email, product, price } = req.body;
+  if (!name || !email || !product || !price) {
+    return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
+  }
 
-  const store_id = process.env.SSLC_STORE_ID!;
-  const store_passwd = process.env.SSLC_STORE_PASSWORD!;
+  const store_id = process.env.SSLC_STORE_ID;
+  const store_passwd = process.env.SSLC_STORE_PASSWORD;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const is_live = false; // false = sandbox
+
+  if (!store_id || !store_passwd || !baseUrl) {
+    return NextResponse.json({ message: "Payment config is not set" }, { status: 500 });
+  }
 
   const post_data = {
     store_id,
@@ -15,9 +28,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     total_amount: price,
     currency: "BDT",
     tran_id: `TRAN${Date.now()}`,
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment-success?product=${encodeURIComponent(product)}&price=${price}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`,
-    fail_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment-failed`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment-failed`,
+    success_url: `${baseUrl}/payment-success?product=${encodeURIComponent(product)}&price=${price}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`,
+    fail_url: `${baseUrl}/payment-failed`,
+    cancel_url: `${baseUrl}/payment-failed`,
     cus_name: name,
     cus_email: email,
     cus_add1: "Dhaka",
@@ -40,9 +53,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     );
 
     const data = await response.json();
-    res.status(200).json(data);
+    return NextResponse.json(data);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Failed to initialize payment" });
+    return NextResponse.json({ message: "Failed to initialize payment" }, { status: 500 });
   }
 }

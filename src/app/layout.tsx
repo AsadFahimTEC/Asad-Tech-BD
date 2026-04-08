@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./styles/globals.css";
 
 import { Toaster } from "sonner";
 import Navbar1 from "@/components/navbar1";
@@ -13,14 +12,14 @@ import ClientWrapper from "./components/ClientWrapper";
 import QuizSection from "@/components/quiz/QuizSection";
 
 
-const geistSans = Geist({
+const geistSans = {
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
+  className: "font-sans",
+};
+const geistMono = {
   variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  className: "font-mono",
+};
 
 export const metadata: Metadata = {
   title: "Asad Tech BD 📅",
