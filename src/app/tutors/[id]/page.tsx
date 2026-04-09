@@ -1,5 +1,12 @@
 import TutorProfileFrom from "@/app/components/TutorProfileFrom";
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const rawIds = process.env.NEXT_PUBLIC_TUTOR_IDS?.split(",")?.filter(Boolean) ?? ["1"];
+  return rawIds.map((id) => ({ id }));
+}
+
 export default function TutorsPageDynamicPage() {
   
   return (

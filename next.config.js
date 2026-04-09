@@ -31,6 +31,7 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+   output: "export",
 
   async rewrites() {
     return [
