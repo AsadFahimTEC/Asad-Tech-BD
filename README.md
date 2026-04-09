@@ -63,7 +63,7 @@ A comprehensive platform designed to connect tutors and students, facilitating s
 3. **Set up environment variables**:
    Create a `.env.local` file in the root directory with the following variables:
    ```env
-   NEXT_PUBLIC_BASE_URL=http://localhost:3000
+   NEXT_PUBLIC_BASE_URL=https://asadtechbd.netlify.app
    SSL_STORE_ID=your_ssl_store_id_here
    SSL_STORE_PASSWORD=your_ssl_store_password_here
    EMAIL_USER=your_email@gmail.com
@@ -100,7 +100,7 @@ A comprehensive platform designed to connect tutors and students, facilitating s
    - Navigate to **Settings** → **Environment Variables**.
    - Add the following variables:
      ```
-     NEXT_PUBLIC_BASE_URL=https://planora-client.vercel.app
+     NEXT_PUBLIC_BASE_URL=https://asadtechbd.netlify.app
      SSL_STORE_ID=your_ssl_store_id_here
      SSL_STORE_PASSWORD=your_ssl_store_password_here
      EMAIL_USER=your_email@gmail.com
@@ -121,7 +121,7 @@ A comprehensive platform designed to connect tutors and students, facilitating s
 ## 📤 Submission Details
 
 - **Frontend Repository**: [https://github.com/AsadFahimTEC/Asad-Tech-BD](https://github.com/AsadFahimTEC/Asad-Tech-BD)
-- **Frontend Live**: [https://planora-client.vercel.app](https://planora-client.vercel.app)
+- **Frontend Live**: [https://asadtechbd.netlify.app](https://asadtechbd.netlify.app)
 
 ## 🤝 Contributing
 
